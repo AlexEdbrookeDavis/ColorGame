@@ -4,6 +4,14 @@
 namespace Engine {
 
 	Window::Window(char *title) {
+		/*
+		THIS MAY NEED MORE RESEARCH
+		glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL 
+		*/
 		strcpy(title, this->curTitle);
 		
 		glfwSetErrorCallback(this->error_callback);
@@ -11,11 +19,22 @@ namespace Engine {
 			exit(EXIT_FAILURE);
 		this->curWindow = glfwCreateWindow(WIDTH, HEIGHT, "title", NULL, NULL);
 		if (!(this->curWindow)) {
+			fprintf( stderr, "Failed to open GLFW window\n" );
 			glfwTerminate();
 			exit(EXIT_FAILURE);
 		}
 		glfwMakeContextCurrent(this->curWindow);
 		//glfwSetKeyCallback(this->curWindow, InputHandler::key_callback);
+		printf("Test\n");
+		
+		
+		glewExperimental=true; // Needed in core profile
+		if (glewInit() != GLEW_OK) {
+			printf("Failed to initialize GLEW\n");
+			glfwTerminate();
+			exit(EXIT_FAILURE);
+		}
+		printf("Test\n");
 	}
 
 	Window::~Window() {

@@ -14,7 +14,7 @@ namespace Engine {
 	}
 
 	void InputHandler::readInputs() {
-		printf("test: %d\n", this->inState->buttonPress);
+		//printf("test: %d\n", this->inState->buttonPress);
 		glfwPollEvents();
 	}
 

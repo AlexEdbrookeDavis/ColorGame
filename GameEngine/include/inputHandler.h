@@ -6,6 +6,7 @@
 #ifndef INPUT_HANDLER_H
 #define INPUT_HANDLER_H
 
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "window.h"
 #include "renderer.h"

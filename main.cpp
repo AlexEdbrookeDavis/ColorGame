@@ -7,9 +7,24 @@
 #include <stddef.h>
 
 #include "gameLoop.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char* argv[])
 {
+	
+	// Initialise GLFW
+	glewExperimental = true; // Needed for core profile
+	if( !glfwInit() ) {
+		fprintf( stderr, "Failed to initialize GLFW\n" );
+		return -1;
+	}
+
+
+
     //Default Exit Status
     //int FinalStatusCode = Engine::StatusCodeSafeExit;
 
