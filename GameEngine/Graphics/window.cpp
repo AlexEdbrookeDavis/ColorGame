@@ -24,8 +24,6 @@ namespace Engine {
 			exit(EXIT_FAILURE);
 		}
 		glfwMakeContextCurrent(this->curWindow);
-		//glfwSetKeyCallback(this->curWindow, InputHandler::key_callback);
-		printf("Test\n");
 		
 		
 		glewExperimental=true; // Needed in core profile
@@ -34,7 +32,6 @@ namespace Engine {
 			glfwTerminate();
 			exit(EXIT_FAILURE);
 		}
-		printf("Test\n");
 	}
 
 	Window::~Window() {

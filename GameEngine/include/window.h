@@ -12,6 +12,8 @@
 #include "string"
 
 namespace Engine {
+
+
 	class Window
 	{
 
@@ -35,7 +37,7 @@ namespace Engine {
 		protected:
 
 		private:
-		
+			
 			GLFWwindow* curWindow;
 			char curTitle[];
 			
