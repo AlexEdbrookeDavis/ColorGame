@@ -14,7 +14,18 @@
 namespace Engine {
 
 	struct InputState {
-		bool buttonPress;
+		bool ePress;
+		bool wPress;
+		bool aPress;
+		bool sPress;
+		bool dPress;
+		bool upPress;
+		bool leftPress;
+		bool rightPress;
+		bool downPress;
+		bool spacePress;
+		bool leftCtrlPress;
+		bool escPress;
 	};
 	
 	class InputHandler {

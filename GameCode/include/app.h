@@ -8,6 +8,7 @@
 
 #include "inputHandler.h"
 #include "renderer.h"
+#include "gameLoop.h"
 
 namespace Game {
 
@@ -16,9 +17,10 @@ namespace Game {
 		
 			Engine::InputState* inState;
 			Engine::RenderState* rendState;
+			Engine::GameState* gameState;
 		
             /** Default constructor */
-            App(Engine::InputState* inState, Engine::RenderState* rendState);
+            App(Engine::InputState* inState, Engine::RenderState* rendState, Engine::GameState* gameState);
             /** Default destructor */
             virtual ~App();
 			

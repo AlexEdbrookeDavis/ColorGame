@@ -17,6 +17,11 @@ namespace Engine {
 
 	struct RenderState {
 		bool leftTri;
+		float xPos;
+		float yPos;		
+		float zPos;		
+		float xRotate;
+		float yRotate;
 	};
 	
 	class Renderer {

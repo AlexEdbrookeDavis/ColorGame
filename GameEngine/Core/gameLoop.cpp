@@ -19,14 +19,19 @@
 	Renderer *rend;
 	Game::App *gameLogic;
 	 
+
+	
+	 
 	GameLoop::GameLoop() {
 		//ctor
+		this->gameState = new GameState;
+		this->gameState->shouldRun = true;
 		
 		rend = new Renderer();
 		
 		input = new InputHandler(rend);
 
-		gameLogic = new Game::App(input->getState(), rend->getState());
+		gameLogic = new Game::App(input->getState(), rend->getState(), gameState);
 		
 	}
 	 
@@ -35,7 +40,7 @@
     } 
 	 
 	void GameLoop::run() {
-		while(true) {
+		while(this->gameState->shouldRun == true) {
 			clock_t loopStart = clock();
 
 			input->readInputs();

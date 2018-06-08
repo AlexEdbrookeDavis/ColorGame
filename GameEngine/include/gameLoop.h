@@ -11,6 +11,10 @@
 namespace Engine {
 	const float MS_PER_FRAME = 16.667;
 	
+	struct GameState {
+		bool shouldRun;
+	};
+	
 	class GameLoop {
         public:
             /** Default constructor */
@@ -22,6 +26,7 @@ namespace Engine {
         protected:
 
         private:
+			GameState *gameState;
     };
 } //namespace Engine
 #endif // GAME_LOOP_H

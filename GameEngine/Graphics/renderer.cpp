@@ -19,6 +19,11 @@ namespace Engine {
 		
 		this->rendState = new RenderState;
 		this->rendState->leftTri = false;
+		this->rendState->xPos = 0.0;
+		this->rendState->yPos = -4.0;
+		this->rendState->zPos = 1.0;
+		this->rendState->xRotate = 0.0;
+		this->rendState->yRotate = 0.0;
 
 		const char *vertexShaderSource ="#version 330 core\n"
 			"layout (location = 0) in vec3 aPos;\n"
@@ -89,8 +94,8 @@ namespace Engine {
 		
 		glm::mat4 Projection = glm::perspective(glm::radians(45.0f), (float) wind->getWidth() / (float)wind->getHeight(), 0.1f, 100.0f);
 		glm::mat4 View = glm::lookAt(
-			glm::vec3(4,3,3), //Camera Location
-			glm::vec3(0,0,0), //Camera Look-at
+			glm::vec3(this->rendState->xPos,this->rendState->zPos,this->rendState->yPos), //Camera Location
+			glm::vec3(this->rendState->xPos + sin(this->rendState->xRotate),this->rendState->zPos + sin(this->rendState->yRotate),this->rendState->yPos + cos(this->rendState->xRotate)), //Camera Look-at
 			glm::vec3(0,1,0)  //Camera Head-up
 		);
 		
