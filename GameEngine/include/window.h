@@ -29,6 +29,7 @@ namespace Engine {
 			int getWidth();
 			int getHeight();
 			char* getTitle();
+			GLFWwindow* getGLFWwindow();
 			
 			void setKeyCallback(GLFWkeyfun func);
 			void setInputPointer(void* inState);

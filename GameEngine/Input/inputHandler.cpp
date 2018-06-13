@@ -2,7 +2,8 @@
 
 namespace Engine {
 
-	InputHandler::InputHandler(Renderer* rend) {
+	InputHandler::InputHandler(Renderer* rend, Window* window) {
+		this->wind = window;
 		
 		this->inState = new InputState;
 		this->inState->ePress = false;
@@ -17,6 +18,8 @@ namespace Engine {
 		this->inState->spacePress = false;
 		this->inState->leftCtrlPress = false;
 		this->inState->escPress = false;
+		this->inState->mousex = 0;
+		this->inState->mousey = 0;
 		rend->setInputs(this->key_callback, inState);
 	}
 
@@ -25,8 +28,14 @@ namespace Engine {
 	}
 
 	void InputHandler::readInputs() {
-		//printf("test: %d\n", this->inState->buttonPress);
 		glfwPollEvents();
+		// Get mouse position
+		double xpos, ypos;
+		glfwGetCursorPos(this->wind->getGLFWwindow(), &xpos, &ypos);
+		// Reset mouse position for next frame
+		glfwSetCursorPos(this->wind->getGLFWwindow(), 640/2, 480/2);
+		this->inState->mousex = double(640/2 - xpos);
+		this->inState->mousey = double(480/2 - ypos);
 	}
 
 	

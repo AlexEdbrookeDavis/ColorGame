@@ -58,5 +58,16 @@ namespace Game {
 		if(this->inState->escPress == true) {
 			this->gameState->shouldRun = false;
 		}
+		
+		this->rendState->xRotate += this->inState->mousex * 0.005;
+		this->rendState->yRotate += this->inState->mousey * 0.005;
+		if(this->rendState->xRotate >= 3.141592 * 2)
+			this->rendState->xRotate -= 3.141592 * 2;
+		if(this->rendState->xRotate <= -3.141592 * 2)
+			this->rendState->xRotate += 3.141592 * 2;
+		if(this->rendState->yRotate >= 3.141592 / 2)
+			this->rendState->yRotate = 3.141592 / 2;
+		if(this->rendState->yRotate <= -3.141592 / 2)
+			this->rendState->yRotate = -3.141592 / 2;
 	}
 } //namespace Game

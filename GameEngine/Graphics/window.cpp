@@ -32,6 +32,8 @@ namespace Engine {
 			glfwTerminate();
 			exit(EXIT_FAILURE);
 		}
+		
+		glfwSetInputMode(this->curWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 	}
 
 	Window::~Window() {
@@ -55,6 +57,10 @@ namespace Engine {
 		return this->curTitle;
 	}
 
+	GLFWwindow* Window::getGLFWwindow(){
+		return this->curWindow;
+	}
+	
 	void Window::setKeyCallback(GLFWkeyfun func){
 		glfwSetKeyCallback(this->curWindow, func);
 	}

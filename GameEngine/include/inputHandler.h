@@ -26,6 +26,8 @@ namespace Engine {
 		bool spacePress;
 		bool leftCtrlPress;
 		bool escPress;
+		double mousex;
+		double mousey;
 	};
 	
 	class InputHandler {
@@ -33,7 +35,7 @@ namespace Engine {
 			InputState* inState;
 
             /** Default constructor */
-            InputHandler(Renderer* rend);
+            InputHandler(Renderer* rend, Window* window);
             /** Default destructor */
             virtual ~InputHandler();
 
@@ -48,7 +50,7 @@ namespace Engine {
         protected:
 
         private:
-		
+			Window* wind;
     };
 } //namespace Engine
 #endif // INPUT_HANDLER_H

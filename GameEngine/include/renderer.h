@@ -20,8 +20,8 @@ namespace Engine {
 		float xPos;
 		float yPos;		
 		float zPos;		
-		float xRotate;
-		float yRotate;
+		double xRotate;
+		double yRotate;
 	};
 	
 	class Renderer {
@@ -43,6 +43,7 @@ namespace Engine {
 
         private:
 			int shaderProgram;
+			Window *wind;
     };
 
 } //namespace Engine

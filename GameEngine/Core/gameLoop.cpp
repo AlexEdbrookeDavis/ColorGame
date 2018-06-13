@@ -29,7 +29,7 @@
 		
 		rend = new Renderer();
 		
-		input = new InputHandler(rend);
+		input = new InputHandler(rend, rend->getWindow());
 
 		gameLogic = new Game::App(input->getState(), rend->getState(), gameState);
 		
