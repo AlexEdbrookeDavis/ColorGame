@@ -20,8 +20,8 @@ namespace Engine {
 		float xPos;
 		float yPos;		
 		float zPos;		
-		double xRotate;
-		double yRotate;
+		long double xRotate;
+		long double yRotate;
 	};
 	
 	class Renderer {

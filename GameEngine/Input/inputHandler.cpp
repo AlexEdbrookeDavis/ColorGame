@@ -33,9 +33,9 @@ namespace Engine {
 		double xpos, ypos;
 		glfwGetCursorPos(this->wind->getGLFWwindow(), &xpos, &ypos);
 		// Reset mouse position for next frame
-		glfwSetCursorPos(this->wind->getGLFWwindow(), 640/2, 480/2);
-		this->inState->mousex = double(640/2 - xpos);
-		this->inState->mousey = double(480/2 - ypos);
+		glfwSetCursorPos(this->wind->getGLFWwindow(), this->wind->getWidth()/2, this->wind->getHeight()/2);
+		this->inState->mousex = double(this->wind->getWidth()/2) - xpos;
+		this->inState->mousey = double(this->wind->getHeight()/2) - ypos;
 	}
 
 	

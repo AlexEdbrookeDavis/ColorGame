@@ -3,6 +3,24 @@
 
 namespace Engine {
 
+	/*bool WGLExtensionSupported(const char *extension_name)
+	{
+		// this is pointer to function which returns pointer to string with list of all wgl extensions
+		PFNWGLGETEXTENSIONSSTRINGEXTPROC _wglGetExtensionsStringEXT = NULL;
+
+		// determine pointer to wglGetExtensionsStringEXT function
+		_wglGetExtensionsStringEXT = (PFNWGLGETEXTENSIONSSTRINGEXTPROC) wglGetProcAddress("wglGetExtensionsStringEXT");
+
+		if (strstr(_wglGetExtensionsStringEXT(), extension_name) == NULL)
+		{
+			// string was not found
+			return false;
+		}
+
+		// extension is supported
+		return true;
+	}*/
+
 	Window::Window(char *title) {
 		/*
 		THIS MAY NEED MORE RESEARCH
@@ -12,12 +30,31 @@ namespace Engine {
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL 
 		*/
+		
+		/*PFNWGLSWAPINTERVALEXTPROC       wglSwapIntervalEXT = NULL;
+		PFNWGLGETSWAPINTERVALEXTPROC    wglGetSwapIntervalEXT = NULL;
+
+		if (WGLExtensionSupported("WGL_EXT_swap_control"))
+		{
+			// Extension is supported, init pointers.
+			wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC) wglGetProcAddress("wglSwapIntervalEXT");
+
+			// this is another function from WGL_EXT_swap_control extension
+			wglGetSwapIntervalEXT = (PFNWGLGETSWAPINTERVALEXTPROC) wglGetProcAddress("wglGetSwapIntervalEXT");
+		}*/
+		
 		strcpy(title, this->curTitle);
 		
 		glfwSetErrorCallback(this->error_callback);
 		if (!glfwInit())
 			exit(EXIT_FAILURE);
-		this->curWindow = glfwCreateWindow(WIDTH, HEIGHT, "title", NULL, NULL);
+		
+		const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+		this->width = mode->width;
+		this->height = mode->height;
+
+		this->curWindow = glfwCreateWindow(this->width, this->height, "title", glfwGetPrimaryMonitor(), NULL);
+		//this->curWindow = glfwCreateWindow(this->width, this->height, "title", NULL, NULL);
 		if (!(this->curWindow)) {
 			fprintf( stderr, "Failed to open GLFW window\n" );
 			glfwTerminate();
@@ -33,7 +70,9 @@ namespace Engine {
 			exit(EXIT_FAILURE);
 		}
 		
-		glfwSetInputMode(this->curWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+		glfwSetInputMode(this->curWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		
+		glfwSwapInterval(1);
 	}
 
 	Window::~Window() {
@@ -42,15 +81,14 @@ namespace Engine {
 
 	void Window::render() {
 		glfwSwapBuffers(this->curWindow);
-		glfwPollEvents();
 	}
 
 	int Window::getWidth() {
-		return this->WIDTH;
+		return this->width;
 	}
 
 	int Window::getHeight() {
-		return this->HEIGHT;
+		return this->height;
 	}
 	
 	char* Window::getTitle(){

@@ -95,7 +95,7 @@ namespace Engine {
 		glm::mat4 Projection = glm::perspective(glm::radians(45.0f), (float) wind->getWidth() / (float)wind->getHeight(), 0.1f, 100.0f);
 		glm::mat4 View = glm::lookAt(
 			glm::vec3(this->rendState->xPos,this->rendState->zPos,this->rendState->yPos), //Camera Location
-			glm::vec3(this->rendState->xPos + cos(this->rendState->yRotate) * sin(this->rendState->xRotate),this->rendState->zPos + sin(this->rendState->yRotate),this->rendState->yPos + cos(this->rendState->xRotate) * cos(this->rendState->yRotate)), //Camera Look-at
+			glm::vec3(this->rendState->xPos + cosl(this->rendState->yRotate) * sinl(this->rendState->xRotate),this->rendState->zPos + sinl(this->rendState->yRotate),this->rendState->yPos + cosl(this->rendState->xRotate) * cosl(this->rendState->yRotate)), //Camera Look-at
 			glm::vec3(0,1,0)  //Camera Head-up
 		);
 		

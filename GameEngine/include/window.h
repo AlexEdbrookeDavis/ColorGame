@@ -7,6 +7,8 @@
 #define WINDOW_H
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <windows.h>
+//#include "GL/wglext.h"
 #include "string"
 
 namespace Engine {
@@ -17,8 +19,6 @@ namespace Engine {
 
 
 		public:
-			const int WIDTH = 640;
-			const int HEIGHT = 480;
 			/** Default constructor */
 			Window(char *title);
 			/** Default destructor */
@@ -36,6 +36,8 @@ namespace Engine {
 		protected:
 
 		private:
+			double width;
+			double height;
 			
 			GLFWwindow* curWindow;
 			char curTitle[];
