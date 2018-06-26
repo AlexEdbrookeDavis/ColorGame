@@ -12,6 +12,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include <glm/gtc/type_ptr.hpp>
 #include "window.h"
+#include "cube.h"
 
 namespace Engine {
 
@@ -44,6 +45,7 @@ namespace Engine {
         private:
 			int shaderProgram;
 			Window *wind;
+			Cube *cube;
     };
 
 } //namespace Engine

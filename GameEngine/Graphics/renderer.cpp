@@ -1,18 +1,10 @@
-
-
-#include "window.h"
-#include "cube.h"
 #include "renderer.h"
 #include "string"
 
 namespace Engine {
-	Cube *cube;
-	Window *wind;
+
 	
     Renderer::Renderer() {
-        //ctor
-
-		
 		char title[] = "Simple example";
 		wind = new Window(title);
 		cube = new Cube(wind);
@@ -25,6 +17,7 @@ namespace Engine {
 		this->rendState->xRotate = 0.0;
 		this->rendState->yRotate = 0.0;
 
+		//TODO: Shift 
 		const char *vertexShaderSource ="#version 330 core\n"
 			"layout (location = 0) in vec3 aPos;\n"
 			"layout(location = 1) in vec3 vertexColor;\n"
@@ -44,29 +37,33 @@ namespace Engine {
 			"}\n\0";
 		
 
-		// vertex shader
+		//Vertex shader
 		int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 		glCompileShader(vertexShader);
-		// check for shader compile errors
+		//Check for shader compile errors
 		int success;
 		//char infoLog[512];
 		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
 		if (!success)
 		{
+			//TODO: fail safely
 			//glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
 		}
-		// fragment shader
+		
+		//Fragment shader
 		int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 		glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 		glCompileShader(fragmentShader);
-		// check for shader compile errors
+		//Check for shader compile errors
 		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
 		if (!success)
 		{
+			//TODO: fail safely
 			//glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
 		}
-		// link shaders
+		
+		//Link shaders
 		shaderProgram = glCreateProgram();
 		glAttachShader(shaderProgram, vertexShader);
 		glAttachShader(shaderProgram, fragmentShader);
@@ -81,7 +78,7 @@ namespace Engine {
     }
 
     Renderer::~Renderer() {
-        //dtor
+		//TODO: Exit cleanly
     }
 	
 	void Renderer::render() {
@@ -92,6 +89,7 @@ namespace Engine {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
+		//Calculate Projection and View
 		glm::mat4 Projection = glm::perspective(glm::radians(45.0f), (float) wind->getWidth() / (float)wind->getHeight(), 0.1f, 100.0f);
 		glm::mat4 View = glm::lookAt(
 			glm::vec3(this->rendState->xPos,this->rendState->zPos,this->rendState->yPos), //Camera Location
@@ -99,7 +97,10 @@ namespace Engine {
 			glm::vec3(0,1,0)  //Camera Head-up
 		);
 		
+		//Draw Model
 		cube->draw(this->rendState->leftTri, Projection, View, shaderProgram);
+		
+		//Render Model View Projection
 		wind->render();		
 	}
 	
@@ -111,6 +112,7 @@ namespace Engine {
 		return this->rendState;
 	}
 	
+	//Initializes Keyboard and Mouse callbacks 
 	void Renderer::setInputs(GLFWkeyfun func, void* inState) {
 		wind->setKeyCallback(func);
 		wind->setInputPointer(inState);
