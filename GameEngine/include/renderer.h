@@ -30,7 +30,7 @@ namespace Engine {
 			RenderState* rendState;
 			
             /** Default constructor */
-            Renderer();
+            Renderer(); 
             /** Default destructor */
             virtual ~Renderer();
 
