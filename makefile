@@ -1,4 +1,4 @@
-LIB=-lglew32 -lglfw3 -lopengl32 -lglu32 -lgdi32
+LIB=-static-libgcc -static-libstdc++ -DGLEW_STATIC -lglew32 -lglfw3 -lopengl32 -lglu32 -lgdi32
 INC=-I GameCode\include -I GameEngine\include
 
 all: main
