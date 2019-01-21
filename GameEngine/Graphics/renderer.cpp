@@ -7,7 +7,7 @@ namespace Engine {
     Renderer::Renderer() {
 		char title[] = "Simple example";
 		wind = new Window(title);
-		cube = new Cube(wind);
+		cube = new Cube();
 		
 		this->rendState = new RenderState;
 		this->rendState->leftTri = false;

@@ -11,15 +11,13 @@
 #include <glm/mat4x4.hpp> // glm::mat4
 #include "glm/gtc/matrix_transform.hpp"
 #include <glm/gtc/type_ptr.hpp>
-#include "window.h"
 
 namespace Engine {	
 	class Cube {
         public:
-			Window* window;
 
             /** Default constructor */
-            Cube(Window* window);
+            Cube();
             /** Default destructor */
             virtual ~Cube();
 
