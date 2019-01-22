@@ -5,9 +5,7 @@
  */
  
 #include <gameLoop.h>
-#include <renderer.h>
-#include <inputHandler.h>
-#include <app.h>
+
 
 #include <time.h>
 
@@ -15,8 +13,8 @@
 #include <Windows.h>
  
  namespace Engine {
-	InputHandler *input;
-	Renderer *rend;
+	Engine::InputHandler *input;
+	Engine::Renderer *rend;
 	Game::App *gameLogic;
 	 
 
@@ -24,12 +22,12 @@
 	 
 	GameLoop::GameLoop() {
 		//ctor
-		this->gameState = new GameState;
+		this->gameState = new Game::GameState;
 		this->gameState->shouldRun = true;
 		
-		rend = new Renderer();
+		rend = new Engine::Renderer();
 		
-		input = new InputHandler(rend, rend->getWindow());
+		input = new Engine::InputHandler(rend, rend->getWindow());
 
 		gameLogic = new Game::App(input->getState(), rend->getState(), gameState);
 		

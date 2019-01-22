@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 
     //generate game Application
 	//TODO: SWITCH TO MAKING AN APP
-    Game::GameLoop *application = new Game::GameLoop();
+    Engine::GameLoop *application = new Engine::GameLoop();
     assert(application != NULL);
 
     //Pass command line to application

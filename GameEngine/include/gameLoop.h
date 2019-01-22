@@ -6,18 +6,17 @@
 
 #ifndef GAME_LOOP_H
 #define GAME_LOOP_H
-
+#include <renderer.h>
+#include <inputHandler.h>
+#include <app.h>
 
 namespace Engine {
 	const float MS_PER_FRAME = 16.667;
 	
-	struct GameState {
-		bool shouldRun;
-	};
-	
 	class GameLoop {
         public:
-            /** Default constructor */
+
+		/** Default constructor */
             GameLoop();
             /** Default destructor */
             virtual ~GameLoop();
@@ -26,7 +25,7 @@ namespace Engine {
         protected:
 
         private:
-			GameState *gameState;
+			Game::GameState *gameState;
     };
-} //namespace Engine
+} //namespace Game
 #endif // GAME_LOOP_H
