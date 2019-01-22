@@ -15,6 +15,9 @@ namespace Engine {
 	
 	class GameLoop {
         public:
+            Engine::InputHandler *input;
+            Engine::Renderer *rend;
+            Game::App *gameLogic;
 
 		/** Default constructor */
             GameLoop();

@@ -13,13 +13,6 @@
 #include <Windows.h>
  
  namespace Engine {
-	Engine::InputHandler *input;
-	Engine::Renderer *rend;
-	Game::App *gameLogic;
-	 
-
-	
-	 
 	GameLoop::GameLoop() {
 		//ctor
 		this->gameState = new Game::GameState;
@@ -29,7 +22,7 @@
 		
 		input = new Engine::InputHandler(rend, rend->getWindow());
 
-		gameLogic = new Game::App(input->getState(), rend->getState(), gameState);
+		this->gameLogic = new Game::App(input->getState(), rend->getState(), gameState);
 		
 	}
 	 
