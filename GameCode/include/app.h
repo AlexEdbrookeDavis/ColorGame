@@ -8,19 +8,22 @@
 
 #include "inputHandler.h"
 #include "renderer.h"
-#include "gameLoop.h"
 
 namespace Game {
+
+	struct GameState {
+		bool shouldRun;
+	};
 
     class App {
         public:
 		
 			Engine::InputState* inState;
 			Engine::RenderState* rendState;
-			Engine::GameState* gameState;
+			Game::GameState* gameState;
 		
             /** Default constructor */
-            App(Engine::InputState* inState, Engine::RenderState* rendState, Engine::GameState* gameState);
+            App(Engine::InputState* inState, Engine::RenderState* rendState, Game::GameState* gameState);
             /** Default destructor */
             virtual ~App();
 			

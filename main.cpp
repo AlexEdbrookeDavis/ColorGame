@@ -32,7 +32,8 @@ int main(int argc, char* argv[])
     //Engine::FileLogger gameLog("gameLog.txt");
 
     //generate game Application
-    Engine::GameLoop *application = new Engine::GameLoop();
+	//TODO: SWITCH TO MAKING AN APP
+    Game::GameLoop *application = new Game::GameLoop();
     assert(application != NULL);
 
     //Pass command line to application

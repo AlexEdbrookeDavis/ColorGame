@@ -3,7 +3,7 @@ INC=-I GameCode\include -I GameEngine\include
 
 all: main
 
-main: App GameLoop
+main: GameLoop 
 	g++  -o main main.cpp GameLoop.o App.o Renderer.o Cube.o Window.o inputHandler.o $(INC) $(LIB)
 	
 

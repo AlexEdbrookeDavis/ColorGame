@@ -4,7 +4,8 @@
 
 namespace Game {
 		
-    App::App(Engine::InputState* inState, Engine::RenderState* rendState, Engine::GameState* gameState) {
+	//TODO: MAKE A GAMELOOP INSTEAD, AND PULL FROM IT
+    App::App(Engine::InputState* inState, Engine::RenderState* rendState, Game::GameState* gameState) {
         //ctor
 		this->inState = inState;
 		this->rendState = rendState;

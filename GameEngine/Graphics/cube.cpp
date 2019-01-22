@@ -1,5 +1,4 @@
 #include "cube.h"
-#include "window.h"
 
 
 
@@ -9,10 +8,10 @@ namespace Engine {
 	
 
 	
-    Cube::Cube(Window* window) {
+    Cube::Cube() {
 		
         //ctor
-		this->window = window;
+		//this->window = window;
 		
 		glGenVertexArrays(1, &VertexArrayID);
 		glBindVertexArray(VertexArrayID);
